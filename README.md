@@ -4,8 +4,12 @@ Native macOS app for HyperX microphones, built with SwiftUI.
 
 **Work in progress.** Microphone discovery through CoreAudio and QuadCast S
 HID discovery/binding are implemented, along with a live-color packet builder
-and byte-level tests. RGB controls, hardware color transfers and onboard saving
-are not implemented yet. Other recognized models currently have audio discovery only.
+and byte-level tests. QuadCast S lighting can be turned off using a verified
+USB interface and a live black-color stream. Keep the app open to maintain
+control; stopping it may restore the microphone's own lighting. Other RGB
+controls and onboard saving are not implemented yet. Other recognized models
+currently have audio discovery only. Physical lighting behavior still needs
+validation on each supported revision.
 
 **Unofficial, not affiliated with HyperX/HP.**
 

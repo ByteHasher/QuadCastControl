@@ -4,7 +4,9 @@ This notebook records USB identifiers and published wire-format observations.
 Publicly reported formats are separate from local hardware observations;
 they have not been validated by RGB transfers in QuadCastControl. The current
 app implements discovery, a generic transport and a pure live-color packet
-builder with byte-level tests. Hardware color transfers are not connected yet.
+builder with byte-level tests. Explicit lighting-off control sends black frames
+through interface 0 after checking the descriptor below. Physical behavior has
+not yet been tested in this app.
 All byte offsets are zero-based; hexadecimal values use the `0x` prefix.
 
 ## USB identifiers
@@ -19,6 +21,19 @@ in [QuadcastRGB's device table][device-source]:
 
 A matching VID/PID identifies a controller; it does not establish which reports
 an individual interface supports.
+
+The published interface-0 report descriptor is:
+
+```text
+06 90 FF 0A 00 FF A1 01 15 00 26 FF 00 75 08 95 40
+09 02 81 02 09 03 91 02 0A 00 FF B1 02 C0
+```
+
+It declares vendor usage page `0xFF90`, usage `0xFF00`, and unnumbered 64-byte
+Input, Output and Feature reports. Source:
+[OpenRGB device investigation](https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/1298).
+The app reads this descriptor with standard `GET_DESCRIPTOR` before any color
+write and requires an exact match; a different descriptor is not accepted.
 
 A passive local IORegistry inspection on 2026-10-18 found HP controller
 `0x03F0:0x028C` and audio device `0x03F0:0x0294` as the only USB children of an
@@ -85,6 +100,10 @@ must be checked per revision; the controller ID alone is insufficient.
 
 No numeric timing from a reference implementation is treated as a measured
 hardware requirement here.
+
+Host refresh and timeout policies are documented separately in the
+[lighting implementation notes](../Design/LightingControl.md); they do not
+establish hardware timing requirements. The measurements above remain outstanding.
 
 ## Research sources
 

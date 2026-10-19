@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var discovery = MicrophoneDiscovery()
+    @State private var lighting = LightingControl()
 
     var body: some View {
         VStack(spacing: 24) {
@@ -53,10 +54,24 @@ struct ContentView: View {
         .padding(28)
         .frame(minWidth: 480, idealWidth: 560, minHeight: 340, idealHeight: 380)
         .task { discovery.start() }
-        .onDisappear { discovery.stop() }
+        .onChange(of: discovery.microphones) { _, microphones in lighting.reconcile(microphones) }
+        .onDisappear { lighting.stopAll(); discovery.stop() }
     }
 
     private func microphoneRow(_ microphone: Microphone) -> some View {
+        VStack(alignment: .leading, spacing: 16) {
+            microphoneDetails(microphone)
+            if microphone.model == .quadCastS {
+                Divider()
+                lightingControls(microphone)
+            }
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
+    }
+
+    private func microphoneDetails(_ microphone: Microphone) -> some View {
         HStack(spacing: 16) {
             Image(systemName: "mic.fill")
                 .font(.system(size: 32, weight: .light))
@@ -74,9 +89,49 @@ struct ContentView: View {
             Spacer(minLength: 0)
             Image(systemName: "cable.connector").foregroundStyle(.secondary)
         }
-        .padding(20)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
+    }
+
+    @ViewBuilder
+    private func lightingControls(_ microphone: Microphone) -> some View {
+        let state = lighting.states[microphone.id] ?? .idle
+        VStack(alignment: .leading, spacing: 10) {
+            switch state {
+            case .sending, .stopping:
+                HStack {
+                    ProgressView().controlSize(.small)
+                    Text(state == .sending ? LocalizedStringKey("lighting.sending") : LocalizedStringKey("lighting.stopping"))
+                }
+            case .active:
+                Label("lighting.offActive", systemImage: "lightbulb.slash")
+                Text("lighting.keepOpen").font(.caption).foregroundStyle(.secondary)
+            case .failed(let failure):
+                Label(lightingErrorKey(failure), systemImage: "exclamationmark.triangle")
+                    .font(.callout).foregroundStyle(.orange)
+            case .idle:
+                if microphone.usbIdentity == nil {
+                    Text("lighting.unavailable").font(.caption).foregroundStyle(.secondary)
+                }
+            }
+            if state == .active || state == .sending {
+                Button("lighting.stop") { lighting.stop(microphone.id) }
+            } else if state != .stopping {
+                Button { lighting.turnOff(microphone) } label: {
+                    Label("lighting.turnOff", systemImage: "lightbulb.slash")
+                }
+                .disabled(microphone.usbIdentity == nil)
+            }
+        }
+    }
+
+    private func lightingErrorKey(_ failure: LightingFailure) -> LocalizedStringKey {
+        switch failure {
+        case .unavailable: "lighting.unavailable"
+        case .openFailed: "lighting.openFailed"
+        case .unsupported: "lighting.unsupported"
+        case .accessDenied: "lighting.accessDenied"
+        case .disconnected: "lighting.disconnected"
+        case .transferFailed: "lighting.transferFailed"
+        }
     }
 
     @ViewBuilder

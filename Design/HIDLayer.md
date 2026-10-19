@@ -51,4 +51,6 @@ audio connection. See [Apple's USB entitlement documentation](https://developer.
 
 The HID binding/transport tests use synthetic metadata and mock reports. Local
 signed builds are checked for the actual USB entitlement. Vendor commands and
-real Feature/Output transfers are intentionally not part of this stage.
+real Feature/Output transfers are intentionally not part of the discovery tests.
+Explicit user-triggered lighting control is documented separately in
+[LightingControl.md](LightingControl.md).

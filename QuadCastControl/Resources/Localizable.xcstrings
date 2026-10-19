@@ -192,6 +192,198 @@
           }
         }
       }
+    },
+    "lighting.turnOff": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off lighting"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выключить подсветку"
+          }
+        }
+      }
+    },
+    "lighting.stop": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop lighting control"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановить управление"
+          }
+        }
+      }
+    },
+    "lighting.sending": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turning off lighting…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выключение подсветки…"
+          }
+        }
+      }
+    },
+    "lighting.stopping": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopping lighting control…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановка управления…"
+          }
+        }
+      }
+    },
+    "lighting.offActive": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lighting-off control is active"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выключение подсветки активно"
+          }
+        }
+      }
+    },
+    "lighting.keepOpen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the app open. Stopping control may restore the microphone’s own lighting."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приложение должно оставаться открытым. После остановки управления микрофон может вернуть свою подсветку."
+          }
+        }
+      }
+    },
+    "lighting.unavailable": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The microphone’s lighting interface could not be identified. Reconnect it and refresh."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось определить интерфейс подсветки. Переподключите микрофон и обновите список."
+          }
+        }
+      }
+    },
+    "lighting.unsupported": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This lighting interface is not supported by the current protocol."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Этот интерфейс подсветки пока не поддерживается."
+          }
+        }
+      }
+    },
+    "lighting.accessDenied": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB access was denied or the lighting interface is in use. Close other microphone utilities and retry."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB-доступ запрещён или интерфейс подсветки занят. Закройте другие утилиты микрофона и повторите."
+          }
+        }
+      }
+    },
+    "lighting.disconnected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The microphone was disconnected. Reconnect it before trying again."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Микрофон отключён. Подключите его перед повторной попыткой."
+          }
+        }
+      }
+    },
+    "lighting.transferFailed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not send the lighting command. Control has stopped; try reconnecting the microphone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось отправить команду подсветки. Управление остановлено; попробуйте переподключить микрофон."
+          }
+        }
+      }
+    },
+    "lighting.openFailed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not open the lighting USB interface. Check USB permissions and close other microphone utilities."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось открыть USB-интерфейс подсветки. Проверьте USB-разрешения и закройте другие утилиты микрофона."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

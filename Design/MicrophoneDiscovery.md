@@ -21,3 +21,6 @@ The model/catalog tests use synthetic metadata. Physical connection, unplugging
 and reconnecting still need to be checked on the user's Mac. Detection uses the
 audio input, so a microphone's separate lighting/HID controller is not displayed
 as another microphone.
+
+The next stage attaches HID metadata and a transport to these audio records;
+see [HIDLayer.md](HIDLayer.md) for identity rules, sandbox configuration and tests.

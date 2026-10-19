@@ -67,6 +67,9 @@ struct ContentView: View {
                 Label("discovery.connectedUSB", systemImage: "circle.fill")
                     .labelStyle(StatusLabelStyle(color: .green))
                     .font(.callout).foregroundStyle(.secondary)
+                if microphone.model == .quadCastS {
+                    hidStatus(for: microphone)
+                }
             }
             Spacer(minLength: 0)
             Image(systemName: "cable.connector").foregroundStyle(.secondary)
@@ -74,6 +77,20 @@ struct ContentView: View {
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
+    }
+
+    @ViewBuilder
+    private func hidStatus(for microphone: Microphone) -> some View {
+        if !microphone.hidInterfaces.isEmpty {
+            Label("hid.connected", systemImage: "link")
+                .font(.caption).foregroundStyle(.secondary)
+        } else if case .failed = discovery.hidState {
+            Label("hid.accessUnavailable", systemImage: "exclamationmark.triangle")
+                .font(.caption).foregroundStyle(.orange)
+        } else {
+            Label("hid.notLinked", systemImage: "link.badge.plus")
+                .font(.caption).foregroundStyle(.secondary)
+        }
     }
 
     private func connectionMessage(title: LocalizedStringKey, detail: LocalizedStringKey,

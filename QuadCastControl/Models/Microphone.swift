@@ -47,6 +47,8 @@ nonisolated struct Microphone: Identifiable, Equatable, Sendable {
     let id: String
     let name: String
     let model: MicrophoneModel
+    var usbIdentity: USBDeviceIdentity? = nil
+    var hidInterfaces: [HIDInterface] = []
 }
 
 /// Audio metadata only. Identifying a model never authorizes vendor/HID commands.

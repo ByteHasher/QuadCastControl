@@ -24,7 +24,12 @@ nonisolated struct CoreAudioMicrophoneScanner: MicrophoneScanning {
 
     func scan() throws -> [Microphone] {
         let candidates = try Self.deviceIDs().compactMap(Self.candidate(for:))
-        return MicrophoneCatalog.microphones(in: candidates)
+        let usbDevices = USBRegistry.devices()
+        return MicrophoneCatalog.microphones(in: candidates).map { microphone in
+            var result = microphone
+            result.usbIdentity = USBIdentityResolver.audioIdentity(uid: microphone.id, devices: usbDevices)
+            return result
+        }
     }
 
     // MARK: - Device list

@@ -144,6 +144,54 @@
           }
         }
       }
+    },
+    "hid.connected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HID interface linked"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HID-интерфейс связан"
+          }
+        }
+      }
+    },
+    "hid.accessUnavailable": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HID access is unavailable"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HID-интерфейс недоступен"
+          }
+        }
+      }
+    },
+    "hid.notLinked": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HID interface not linked"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HID-интерфейс не связан"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

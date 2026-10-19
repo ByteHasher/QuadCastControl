@@ -13,5 +13,8 @@ struct QuadCastControlApp: App {
         WindowGroup {
             ContentView()
         }
+        .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 1240, height: 820)
+        .windowResizability(.contentMinSize)
     }
 }

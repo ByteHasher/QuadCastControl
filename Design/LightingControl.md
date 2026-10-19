@@ -1,7 +1,7 @@
 # Solid-color lighting control
 
-`LightingControl` starts only after the user presses **Apply color** or
-**Turn off lighting**. It opens a `HIDTransport`, sends the existing builder's
+`LightingControl` starts after a user color/brightness edit while **Lighting**
+is on, or an explicit change of the **Lighting** switch. There is no Apply step. It opens a `HIDTransport`, sends the existing builder's
 header and color packet, and refreshes complete pairs while the window remains open. It has no
 startup restore, flash-save operation, device-status request or automatic retry.
 Construction and microphone discovery do not start lighting writes.
@@ -14,15 +14,18 @@ The editor stores `RGBColor`; only the native picker's custom input needs a
 SwiftUI-to-sRGB byte conversion. That bridge lives in `Views/RGBColor+SwiftUI.swift`.
 Preset selection assigns the model color directly, without a floating-point
 round trip. Error messages are provided by the `LightingFailure` extension.
-After **Apply color**, edits replace the requested color for the next frame on
+During control, edits replace the requested color for the next frame on
 the same open transport. Each frame captures one color before sending its header,
 so an edit cannot mix values inside a transaction. Intermediate picker/slider
 events are coalesced by the existing refresh loop, not queued as USB requests.
 
-**Turn off lighting** replaces the requested color with black on that same
+Switching **Lighting** off replaces the requested color with black on that same
 stream. The editor preserves its selected color and brightness; edits while
-switched off stay as a preview until **Apply color**. No automatic write starts
-after stopping, a failure or reconnecting. Settings are not persisted yet.
+switched off stay as a selection until **Lighting** is switched on. UI writes
+originate in user-action bindings, not view appearance or draft observation;
+navigation, stopping, failures and reconnection do not automatically start writes.
+The next user edit while enabled, or an explicit toggle, starts control again.
+Selecting the already-selected preset also starts control. Settings are not persisted yet.
 
 `USBQuadCastSTransport` reaches the RGB interface even when IOHIDManager exposes
 only the separate consumer-control HID collection. It uses the audio record's
@@ -55,7 +58,7 @@ required cadence and behavior after closing the app still need hardware checks.
 the task and close the transport. An in-flight synchronous USB request may finish
 before cancellation takes effect, bounded by the transfer timeout. Stopping
 sends no additional lighting command and may allow firmware lighting to resume.
-Reconnection does not restart writes; the user must press the button again.
+Reconnection does not restart writes; a user edit or toggle is required.
 
 English/Russian UI strings live in `Localizable.xcstrings`. Errors distinguish
 missing identity, unsupported descriptor, access/busy failure, disconnection and

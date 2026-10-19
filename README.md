@@ -6,8 +6,8 @@ Native macOS app for HyperX microphones, built with SwiftUI.
 HID discovery/binding are implemented, along with a live-color packet builder
 and byte-level tests. QuadCast S supports a solid color picker, color presets,
 brightness from 0–100%, and lighting off through a verified USB interface.
-Press **Apply color** to start control; subsequent color/brightness edits update
-the active stream. Keep the app open to maintain control; stopping it may
+With **Lighting** on, choosing a color or changing brightness applies it
+immediately; there is no Apply step. Opening the app does not change lighting. Keep the app open to maintain control; stopping it may
 restore the microphone's own lighting. Animations and onboard saving are not
 implemented yet. Other recognized models
 currently have audio discovery only. Physical lighting behavior still needs
@@ -27,6 +27,7 @@ App Sandbox USB access is enabled in the app's entitlements.
 
 ## Documentation
 
+- [Console interface](Design/Interface.md)
 - [Hardware protocol facts and research sources](Docs/PROTOCOL.md)
 - [HID layer and mock transport](Design/HIDLayer.md)
 - [Microphone discovery](Design/MicrophoneDiscovery.md)

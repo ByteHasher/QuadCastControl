@@ -1,10 +1,13 @@
+//
+//  LightingControl.swift
+//  QuadCastControl
+//
+//  Created by ByteHasher on 19.10.2026.
+//
+
 import Foundation
 import Observation
 import IOKit
-
-nonisolated enum LightingFailure: Equatable, Sendable {
-    case unavailable, openFailed, unsupported, accessDenied, disconnected, transferFailed
-}
 
 nonisolated enum LightingState: Equatable, Sendable {
     case idle, sending, active, stopping
@@ -15,8 +18,10 @@ nonisolated enum LightingState: Equatable, Sendable {
 @Observable
 final class LightingControl {
     private(set) var states: [String: LightingState] = [:]
+    private(set) var activeColors: [String: RGBColor] = [:]
     @ObservationIgnored private var tasks: [String: Task<Void, Never>] = [:]
     @ObservationIgnored private var targets: [String: USBDeviceIdentity] = [:]
+    @ObservationIgnored private var requestedColors: [String: RGBColor] = [:]
     @ObservationIgnored private let makeTransport: @Sendable (Microphone) -> any HIDTransport
     @ObservationIgnored private let pause: @Sendable () async throws -> Void
 
@@ -31,39 +36,32 @@ final class LightingControl {
     }
 
     func turnOff(_ microphone: Microphone) {
-        guard tasks[microphone.id] == nil else { return }
+        apply(microphone, color: .off, brightnessPercent: 100)
+    }
+
+    func apply(_ microphone: Microphone, color: RGBColor, brightnessPercent: Int) {
         guard microphone.model == .quadCastS, let identity = microphone.usbIdentity else {
             states[microphone.id] = .failed(.unavailable)
             return
         }
         let id = microphone.id
+        guard states[id] != .stopping else { return }
+        if tasks[id] != nil {
+            guard targets[id] == identity else { stop(id); return }
+            requestedColors[id] = color.scaled(byPercent: brightnessPercent)
+            return
+        }
         let transport = makeTransport(microphone)
         let pause = pause
         targets[id] = identity
+        requestedColors[id] = color.scaled(byPercent: brightnessPercent)
         states[id] = .sending
         tasks[id] = Task { [weak self] in
-            var failure: LightingFailure?
-            do {
-                try Task.checkCancellation()
-                try await transport.open()
-                let reports = QuadCastSColorPacketBuilder.solid(.off)
-                while !Task.isCancelled {
-                    guard self != nil else { throw CancellationError() }
-                    for report in reports {
-                        try Task.checkCancellation()
-                        try await transport.send(report)
-                    }
-                    try Task.checkCancellation()
-                    if self?.states[id] != .active { self?.states[id] = .active }
-                    try await pause()
-                }
-            } catch {
-                if !Task.isCancelled { failure = Self.classify(error) }
+            let failure = await Self.runSession(transport: transport, pause: pause) { [weak self] in
+                guard let self else { throw CancellationError() }
+                try await self.sendFrame(for: id, transport: transport)
             }
-            await transport.close()
-            self?.tasks[id] = nil
-            self?.targets[id] = nil
-            self?.states[id] = failure.map(LightingState.failed) ?? .idle
+            self?.finishSession(for: id, failure: failure)
         }
     }
 
@@ -83,20 +81,68 @@ final class LightingControl {
         }
     }
 
+    /// Runs the transport lifecycle without retaining the controller between frames.
+    private static func runSession(transport: any HIDTransport,
+                                   pause: @Sendable () async throws -> Void,
+                                   sendFrame: @MainActor () async throws -> Void) async -> LightingFailure? {
+        var failure: LightingFailure?
+        do {
+            try Task.checkCancellation()
+            try await transport.open()
+            while !Task.isCancelled {
+                try await sendFrame()
+                try await pause()
+            }
+        } catch {
+            if !Task.isCancelled { failure = classify(error) }
+        }
+        await transport.close()
+        return failure
+    }
+
+    private func sendFrame(for id: String, transport: any HIDTransport) async throws {
+        guard let color = requestedColors[id] else { throw CancellationError() }
+        // Capture a single color for the whole header/payload transaction.
+        // Edits during a transfer take effect on the next complete frame.
+        let reports = QuadCastSColorPacketBuilder.solid(color)
+        for report in reports {
+            try Task.checkCancellation()
+            try await transport.send(report)
+        }
+        try Task.checkCancellation()
+        if activeColors[id] != color { activeColors[id] = color }
+        if states[id] != .active { states[id] = .active }
+    }
+
+    private func finishSession(for id: String, failure: LightingFailure?) {
+        tasks[id] = nil
+        targets[id] = nil
+        requestedColors[id] = nil
+        activeColors[id] = nil
+        states[id] = failure.map(LightingState.failed) ?? .idle
+    }
+
     private static func classify(_ error: Error) -> LightingFailure {
         switch error {
-        case LightingError.unavailable: return .unavailable
-        case LightingError.openFailed: return .openFailed
-        case LightingError.unsupportedDescriptor: return .unsupported
-        case HIDTransportError.disconnected: return .disconnected
+        case LightingError.unavailable:
+            return .unavailable
+        case LightingError.openFailed:
+            return .openFailed
+        case LightingError.unsupportedDescriptor:
+            return .unsupported
+        case HIDTransportError.disconnected:
+            return .disconnected
         default:
             let code: Int32
             if case HIDTransportError.ioKit(let status) = error { code = status }
             else { code = Int32(truncatingIfNeeded: (error as NSError).code) }
             switch code {
-            case kIOReturnNoDevice, kIOReturnNotAttached: return .disconnected
-            case kIOReturnNotPermitted, kIOReturnNotPrivileged, kIOReturnExclusiveAccess: return .accessDenied
-            default: return .transferFailed
+            case kIOReturnNoDevice, kIOReturnNotAttached:
+                return .disconnected
+            case kIOReturnNotPermitted, kIOReturnNotPrivileged, kIOReturnExclusiveAccess:
+                return .accessDenied
+            default:
+                return .transferFailed
             }
         }
     }

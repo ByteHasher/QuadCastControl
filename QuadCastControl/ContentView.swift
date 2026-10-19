@@ -52,7 +52,7 @@ struct ContentView: View {
             }
         }
         .padding(28)
-        .frame(minWidth: 480, idealWidth: 560, minHeight: 340, idealHeight: 380)
+        .frame(minWidth: 480, idealWidth: 560, minHeight: 340, idealHeight: 560)
         .task { discovery.start() }
         .onChange(of: discovery.microphones) { _, microphones in lighting.reconcile(microphones) }
         .onDisappear { lighting.stopAll(); discovery.stop() }
@@ -63,7 +63,7 @@ struct ContentView: View {
             microphoneDetails(microphone)
             if microphone.model == .quadCastS {
                 Divider()
-                lightingControls(microphone)
+                MicrophoneLightingView(microphone: microphone, lighting: lighting)
             }
         }
         .padding(20)
@@ -88,49 +88,6 @@ struct ContentView: View {
             }
             Spacer(minLength: 0)
             Image(systemName: "cable.connector").foregroundStyle(.secondary)
-        }
-    }
-
-    @ViewBuilder
-    private func lightingControls(_ microphone: Microphone) -> some View {
-        let state = lighting.states[microphone.id] ?? .idle
-        VStack(alignment: .leading, spacing: 10) {
-            switch state {
-            case .sending, .stopping:
-                HStack {
-                    ProgressView().controlSize(.small)
-                    Text(state == .sending ? LocalizedStringKey("lighting.sending") : LocalizedStringKey("lighting.stopping"))
-                }
-            case .active:
-                Label("lighting.offActive", systemImage: "lightbulb.slash")
-                Text("lighting.keepOpen").font(.caption).foregroundStyle(.secondary)
-            case .failed(let failure):
-                Label(lightingErrorKey(failure), systemImage: "exclamationmark.triangle")
-                    .font(.callout).foregroundStyle(.orange)
-            case .idle:
-                if microphone.usbIdentity == nil {
-                    Text("lighting.unavailable").font(.caption).foregroundStyle(.secondary)
-                }
-            }
-            if state == .active || state == .sending {
-                Button("lighting.stop") { lighting.stop(microphone.id) }
-            } else if state != .stopping {
-                Button { lighting.turnOff(microphone) } label: {
-                    Label("lighting.turnOff", systemImage: "lightbulb.slash")
-                }
-                .disabled(microphone.usbIdentity == nil)
-            }
-        }
-    }
-
-    private func lightingErrorKey(_ failure: LightingFailure) -> LocalizedStringKey {
-        switch failure {
-        case .unavailable: "lighting.unavailable"
-        case .openFailed: "lighting.openFailed"
-        case .unsupported: "lighting.unsupported"
-        case .accessDenied: "lighting.accessDenied"
-        case .disconnected: "lighting.disconnected"
-        case .transferFailed: "lighting.transferFailed"
         }
     }
 

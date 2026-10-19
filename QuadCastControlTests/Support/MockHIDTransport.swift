@@ -1,11 +1,20 @@
 //
 //  MockHIDTransport.swift
-//  QuadCastControl
+//  QuadCastControlTests
 //
 //  Created by ByteHasher on 18.10.2026.
 //
 
 import Foundation
+@testable import QuadCastControl
+
+extension HIDCapabilities {
+    static let mock = Self(inputReportSize: 64, outputReportSize: 64, featureReportSize: 64)
+}
+
+nonisolated enum MockHIDTransportError: Error, Equatable, Sendable {
+    case missingFeatureResponse
+}
 
 nonisolated enum HIDOperation: Equatable, Sendable {
     case open
@@ -55,7 +64,7 @@ actor MockHIDTransport: HIDTransport {
         try requireOpen()
         try HIDReportValidation.length(length, maximum: capabilities.featureReportSize)
         try perform(.getFeature(reportID: reportID, length: length))
-        guard var queue = responses[reportID], !queue.isEmpty else { throw HIDTransportError.missingMockResponse }
+        guard var queue = responses[reportID], !queue.isEmpty else { throw MockHIDTransportError.missingFeatureResponse }
         let response = queue.removeFirst()
         responses[reportID] = queue
         try HIDReportValidation.response(response, reportID: reportID, requestedLength: length)

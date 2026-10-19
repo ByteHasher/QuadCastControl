@@ -3,6 +3,19 @@
 The microphone list still comes exclusively from CoreAudio. HID interfaces are
 attachments to these records; they never create another microphone row.
 
+## Source layout
+
+- `QuadCastControl/HID/`: HID interface metadata, discovery and the transport
+  protocol.
+- `QuadCastControl/USB/`: USB product/device identity, registry access and the
+  USB-backed QuadCast S transport.
+- `QuadCastControl/Devices/QuadCastS/`: model-specific device IDs, audio/HID
+  binding, lighting target validation and the color packet builder.
+- `QuadCastControlTests/Support/`: mock transport, operation log and test fixtures.
+
+The folders organize one application module; no protocol behavior or target
+membership is changed. Xcode's synchronized groups include the relocated files.
+
 ## Discovery and identity
 
 `HIDInterfaceDiscovery` uses `IOHIDManager` with explicit QuadCast S controller
@@ -25,20 +38,33 @@ revisions require their own verified topology before they can be auto-linked.
 
 Discovery reads properties and opens IOHIDManager with shared access. It does
 not send Feature/Output reports, query vendor status, seize devices, record
-audio, or start RGB. The native transport is opened only by an explicit client
-call. The discovery/session objects unregister callbacks and invalidate retained
-transports on stop or removal.
+audio, or start RGB. Discovery retains interface metadata, not per-device
+transport objects. It unregisters callbacks and clears metadata on stop, and
+removes interface records when devices disappear. The lighting USB transport
+is opened only by an explicit user action.
 
 ## Transport
 
-`HIDTransport` provides async open/close, report sending and Feature reads.
-`IOHIDTransport` serializes native operations in an actor. Lengths are bounded
-by the device's reported capabilities and an allocation limit. Numbered buffers
-include one report ID byte; unnumbered buffers include payload only.
+`HIDTransport` is the async contract shared by lighting control and its mock.
+Numbered report buffers include one report ID byte; unnumbered buffers include
+payload only. Discovery does not create or expose transports.
 
-`MockHIDTransport` is an actor with an operation log, queued Feature responses,
-explicit disconnect and one-shot error injection. Its validation matches the
-native adapter. Tests can exercise it without IOHIDManager or real hardware.
+`USBQuadCastSTransport` is the only native transport and is the default used by
+`LightingControl` for all current color/off writes. It sends HID Feature
+`SET_REPORT` control transfers through
+IOUSBHost on the verified QuadCast S interface 0. This path is needed because
+macOS can expose only the separate consumer-control HID collection through
+IOHIDManager, leaving the RGB interface unavailable there. It accepts only
+64-byte unnumbered Feature writes; status reads are unsupported.
+See [LightingControl.md](LightingControl.md) for descriptor gating and USB access.
+
+`MockHIDTransport` lives in `QuadCastControlTests/Support/MockHIDTransport.swift`
+and is compiled only into the unit-test target, together with its operation log,
+mock capabilities and mock-specific errors. It is an actor with queued Feature responses,
+explicit disconnect and one-shot error injection. Framing/capability validation
+used only by the mock also lives in the test target. The mock does not emulate
+IOUSBHost permissions or native descriptor validation. Tests can exercise it
+without IOHIDManager or real hardware.
 `MicrophoneDiscovery` also accepts an injected `HIDDiscovering` provider.
 
 ## Sandbox and validation

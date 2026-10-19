@@ -4,8 +4,8 @@ This notebook records USB identifiers and published wire-format observations.
 Publicly reported formats are separate from local hardware observations;
 they have not been validated by RGB transfers in QuadCastControl. The current
 app implements discovery, a generic transport and a pure live-color packet
-builder with byte-level tests. Explicit lighting-off control sends black frames
-through interface 0 after checking the descriptor below. Physical behavior has
+builder with byte-level tests. Explicit color/off control sends solid-color or
+black frames through interface 0 after checking the descriptor below. Physical behavior has
 not yet been tested in this app.
 All byte offsets are zero-based; hexadecimal values use the `0x` prefix.
 

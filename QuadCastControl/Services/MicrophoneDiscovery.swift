@@ -74,13 +74,6 @@ final class MicrophoneDiscovery {
         }
     }
 
-    func transport(for interfaceID: UInt64, microphoneID: String) -> (any HIDTransport)? {
-        guard microphones.contains(where: {
-            $0.id == microphoneID && $0.hidInterfaces.contains(where: { $0.id == interfaceID })
-        }) else { return nil }
-        return hid.transport(for: interfaceID)
-    }
-
     private func updateHIDBindings() {
         hidState = hid.state
         microphones = MicrophoneHIDBinder.bind(microphones, interfaces: hid.interfaces)

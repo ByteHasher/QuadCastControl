@@ -16,7 +16,6 @@ protocol HIDDiscovering: AnyObject {
     func start()
     func stop()
     func refresh()
-    func transport(for interfaceID: UInt64) -> (any HIDTransport)?
 }
 
 @MainActor
@@ -25,7 +24,6 @@ final class HIDInterfaceDiscovery: HIDDiscovering {
     private(set) var state: HIDDiscoveryState = .stopped
     var onChange: (@MainActor () -> Void)?
     private var session: HIDManagerSession?
-    private var transports: [UInt64: IOHIDTransport] = [:]
 
     func start() {
         guard session == nil else { return }
@@ -46,8 +44,6 @@ final class HIDInterfaceDiscovery: HIDDiscovering {
 
     func stop() {
         session = nil
-        for transport in transports.values { Task { await transport.disconnect() } }
-        transports.removeAll()
         interfaces = []
         state = .stopped
         onChange?()
@@ -62,19 +58,17 @@ final class HIDInterfaceDiscovery: HIDDiscovering {
         for device in devices {
             if let info = describe(device, usbDevices: usbDevices) {
                 currentIDs.insert(info.id)
-                store(device, info: info)
+                store(info)
             }
         }
-        for id in Array(transports.keys) where !currentIDs.contains(id) { remove(id: id) }
+        interfaces.removeAll { !currentIDs.contains($0.id) }
         interfaces.sort { $0.id < $1.id }
         if interfaces != previous { onChange?() }
     }
 
-    func transport(for interfaceID: UInt64) -> (any HIDTransport)? { transports[interfaceID] }
-
     fileprivate func attached(_ device: IOHIDDevice) {
         guard let info = describe(device, usbDevices: USBRegistry.devices()) else { return }
-        store(device, info: info)
+        store(info)
         interfaces.sort { $0.id < $1.id }
         onChange?()
     }
@@ -85,16 +79,12 @@ final class HIDInterfaceDiscovery: HIDDiscovering {
         onChange?()
     }
 
-    private func store(_ device: IOHIDDevice, info: HIDInterface) {
-        if transports[info.id] == nil {
-            transports[info.id] = IOHIDTransport(device: HIDDeviceReference(device), capabilities: info.capabilities)
-        }
+    private func store(_ info: HIDInterface) {
         interfaces.removeAll { $0.id == info.id }
         interfaces.append(info)
     }
 
     private func remove(id: UInt64) {
-        if let transport = transports.removeValue(forKey: id) { Task { await transport.disconnect() } }
         interfaces.removeAll { $0.id == id }
     }
 

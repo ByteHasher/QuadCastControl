@@ -1,3 +1,10 @@
+//
+//  USBQuadCastSTransport.swift
+//  QuadCastControl
+//
+//  Created by ByteHasher on 19.10.2026.
+//
+
 import Foundation
 import IOKit
 import IOUSBHost

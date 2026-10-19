@@ -1,390 +1,598 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "discovery.appTitle": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QuadCast Control"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "discovery.appTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QuadCast Control"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QuadCast Control"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QuadCast Control"
           }
         }
       }
     },
-    "discovery.refresh": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh"
+    "discovery.connectHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect your HyperX microphone via USB."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обновить"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключите микрофон HyperX по USB."
           }
         }
       }
     },
-    "discovery.scanning": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Looking for microphones…"
+    "discovery.connectedUSB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connected via USB"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Поиск микрофонов…"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключён по USB"
           }
         }
       }
     },
-    "discovery.disconnected": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No microphone connected"
+    "discovery.disconnected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No microphone connected"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Микрофон не подключён"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Микрофон не подключён"
           }
         }
       }
     },
-    "discovery.connectHint": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connect your HyperX microphone via USB."
+    "discovery.errorDetail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The audio device list is unavailable. Try refreshing it."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключите микрофон HyperX по USB."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Список аудиоустройств недоступен. Попробуйте обновить его."
           }
         }
       }
     },
-    "discovery.connectedUSB": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connected via USB"
+    "discovery.errorTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to check the connection"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключён по USB"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось проверить подключение"
           }
         }
       }
     },
-    "discovery.errorTitle": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unable to check the connection"
+    "discovery.manualRefreshHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic updates are unavailable. Use Refresh after connecting or disconnecting a microphone."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось проверить подключение"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автообновление недоступно. После подключения или отключения микрофона нажмите «Обновить»."
           }
         }
       }
     },
-    "discovery.errorDetail": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The audio device list is unavailable. Try refreshing it."
+    "discovery.refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Список аудиоустройств недоступен. Попробуйте обновить его."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновить"
           }
         }
       }
     },
-    "discovery.manualRefreshHint": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatic updates are unavailable. Use Refresh after connecting or disconnecting a microphone."
+    "discovery.scanning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looking for microphones…"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Автообновление недоступно. После подключения или отключения микрофона нажмите «Обновить»."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск микрофонов…"
           }
         }
       }
     },
-    "hid.connected": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HID interface linked"
+    "hid.accessUnavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID access is unavailable"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HID-интерфейс связан"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID-интерфейс недоступен"
           }
         }
       }
     },
-    "hid.accessUnavailable": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HID access is unavailable"
+    "hid.connected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID interface linked"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HID-интерфейс недоступен"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID-интерфейс связан"
           }
         }
       }
     },
-    "hid.notLinked": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HID interface not linked"
+    "hid.notLinked" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID interface not linked"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HID-интерфейс не связан"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID-интерфейс не связан"
           }
         }
       }
     },
-    "lighting.turnOff": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Turn off lighting"
+    "lighting.accessDenied" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USB access was denied or the lighting interface is in use. Close other microphone utilities and retry."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выключить подсветку"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USB-доступ запрещён или интерфейс подсветки занят. Закройте другие утилиты микрофона и повторите."
           }
         }
       }
     },
-    "lighting.stop": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stop lighting control"
+    "lighting.applyColor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply color"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Остановить управление"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Применить цвет"
           }
         }
       }
     },
-    "lighting.sending": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Turning off lighting…"
+    "lighting.brightness" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brightness"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выключение подсветки…"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яркость"
           }
         }
       }
     },
-    "lighting.stopping": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stopping lighting control…"
+    "lighting.color" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Остановка управления…"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвет"
           }
         }
       }
     },
-    "lighting.offActive": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lighting-off control is active"
+    "lighting.colorActive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color control is active"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выключение подсветки активно"
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Управление цветом активно"
           }
         }
       }
     },
-    "lighting.keepOpen": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep the app open. Stopping control may restore the microphone’s own lighting."
+    "lighting.disconnected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The microphone was disconnected. Reconnect it before trying again."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приложение должно оставаться открытым. После остановки управления микрофон может вернуть свою подсветку."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Микрофон отключён. Подключите его перед повторной попыткой."
           }
         }
       }
     },
-    "lighting.unavailable": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The microphone’s lighting interface could not be identified. Reconnect it and refresh."
+    "lighting.keepOpen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep the app open. Stopping control may restore the microphone’s own lighting."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось определить интерфейс подсветки. Переподключите микрофон и обновите список."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приложение должно оставаться открытым. После остановки управления микрофон может вернуть свою подсветку."
           }
         }
       }
     },
-    "lighting.unsupported": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This lighting interface is not supported by the current protocol."
+    "lighting.offActive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lighting-off control is active"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Этот интерфейс подсветки пока не поддерживается."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключение подсветки активно"
           }
         }
       }
     },
-    "lighting.accessDenied": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "USB access was denied or the lighting interface is in use. Close other microphone utilities and retry."
+    "lighting.openFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not open the lighting USB interface. Check USB permissions and close other microphone utilities."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "USB-доступ запрещён или интерфейс подсветки занят. Закройте другие утилиты микрофона и повторите."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось открыть USB-интерфейс подсветки. Проверьте USB-разрешения и закройте другие утилиты микрофона."
           }
         }
       }
     },
-    "lighting.disconnected": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The microphone was disconnected. Reconnect it before trying again."
+    "lighting.preset.blue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Микрофон отключён. Подключите его перед повторной попыткой."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синий"
           }
         }
       }
     },
-    "lighting.transferFailed": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not send the lighting command. Control has stopped; try reconnecting the microphone."
+    "lighting.preset.cyan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cyan"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось отправить команду подсветки. Управление остановлено; попробуйте переподключить микрофон."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Голубой"
           }
         }
       }
     },
-    "lighting.openFailed": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not open the lighting USB interface. Check USB permissions and close other microphone utilities."
+    "lighting.preset.green" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green"
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось открыть USB-интерфейс подсветки. Проверьте USB-разрешения и закройте другие утилиты микрофона."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зелёный"
+          }
+        }
+      }
+    },
+    "lighting.preset.orange" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оранжевый"
+          }
+        }
+      }
+    },
+    "lighting.preset.purple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purple"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фиолетовый"
+          }
+        }
+      }
+    },
+    "lighting.preset.red" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Красный"
+          }
+        }
+      }
+    },
+    "lighting.preset.white" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "White"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белый"
+          }
+        }
+      }
+    },
+    "lighting.preset.yellow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yellow"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жёлтый"
+          }
+        }
+      }
+    },
+    "lighting.previewHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a color and press Apply color."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите цвет и нажмите «Применить цвет»."
+          }
+        }
+      }
+    },
+    "lighting.sending" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Applying lighting…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Применение подсветки…"
+          }
+        }
+      }
+    },
+    "lighting.stop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop lighting control"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Остановить управление"
+          }
+        }
+      }
+    },
+    "lighting.stopping" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopping lighting control…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Остановка управления…"
+          }
+        }
+      }
+    },
+    "lighting.transferFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not send the lighting command. Control has stopped; try reconnecting the microphone."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось отправить команду подсветки. Управление остановлено; попробуйте переподключить микрофон."
+          }
+        }
+      }
+    },
+    "lighting.turnOff" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn off lighting"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключить подсветку"
+          }
+        }
+      }
+    },
+    "lighting.unavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The microphone’s lighting interface could not be identified. Reconnect it and refresh."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось определить интерфейс подсветки. Переподключите микрофон и обновите список."
+          }
+        }
+      }
+    },
+    "lighting.unsupported" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This lighting interface is not supported by the current protocol."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот интерфейс подсветки пока не поддерживается."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

@@ -3,7 +3,8 @@
 This notebook records USB identifiers and published wire-format observations.
 Publicly reported formats are separate from local hardware observations;
 they have not been validated by RGB transfers in QuadCastControl. The current
-app implements discovery and a generic transport, with no RGB command encoder.
+app implements discovery, a generic transport and a pure live-color packet
+builder with byte-level tests. Hardware color transfers are not connected yet.
 All byte offsets are zero-based; hexadecimal values use the `0x` prefix.
 
 ## USB identifiers

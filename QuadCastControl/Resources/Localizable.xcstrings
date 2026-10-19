@@ -1,0 +1,150 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "discovery.appTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QuadCast Control"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QuadCast Control"
+          }
+        }
+      }
+    },
+    "discovery.refresh": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить"
+          }
+        }
+      }
+    },
+    "discovery.scanning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking for microphones…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поиск микрофонов…"
+          }
+        }
+      }
+    },
+    "discovery.disconnected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No microphone connected"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Микрофон не подключён"
+          }
+        }
+      }
+    },
+    "discovery.connectHint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect your HyperX microphone via USB."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключите микрофон HyperX по USB."
+          }
+        }
+      }
+    },
+    "discovery.connectedUSB": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected via USB"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключён по USB"
+          }
+        }
+      }
+    },
+    "discovery.errorTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to check the connection"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось проверить подключение"
+          }
+        }
+      }
+    },
+    "discovery.errorDetail": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The audio device list is unavailable. Try refreshing it."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Список аудиоустройств недоступен. Попробуйте обновить его."
+          }
+        }
+      }
+    },
+    "discovery.manualRefreshHint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic updates are unavailable. Use Refresh after connecting or disconnecting a microphone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автообновление недоступно. После подключения или отключения микрофона нажмите «Обновить»."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

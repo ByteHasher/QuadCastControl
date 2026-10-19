@@ -1,0 +1,61 @@
+{
+  "fill": {
+    "linear-gradient": [
+      "srgb:0.10588,0.09020,0.18824,1.00000",
+      "srgb:0.02353,0.04706,0.09412,1.00000"
+    ],
+    "orientation": {
+      "start": {
+        "x": 0,
+        "y": 0
+      },
+      "stop": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  },
+  "groups": [
+    {
+      "name": "03 RGB grille",
+      "layers": [
+        {
+          "name": "Violet pink blue light",
+          "image-name": "03-Grille.svg",
+          "glass": true
+        }
+      ],
+      "shadow": {
+        "kind": "layer-color",
+        "opacity": 0.65
+      },
+      "specular": true,
+      "translucency": {
+        "enabled": false,
+        "value": 0.5
+      }
+    },
+    {
+      "name": "02 Microphone body",
+      "layers": [
+        {
+          "name": "Body and suspension",
+          "image-name": "02-Microphone.svg",
+          "glass": true
+        }
+      ],
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.45
+      },
+      "specular": true,
+      "translucency": {
+        "enabled": false,
+        "value": 0.5
+      }
+    }
+  ],
+  "supported-platforms": {
+    "squares": "shared"
+  }
+}

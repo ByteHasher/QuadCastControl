@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="rgb" x1="398" y1="280" x2="624" y2="590" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a578ff"/>
+      <stop offset="0.42" stop-color="#f865d9"/>
+      <stop offset="0.72" stop-color="#8c78ff"/>
+      <stop offset="1" stop-color="#43caff"/>
+    </linearGradient>
+  </defs>
+  <!-- Open horizontal slots keep the grille legible at Dock sizes. -->
+  <g fill="url(#rgb)">
+    <rect x="398" y="290" width="228" height="16" rx="8"/>
+    <rect x="390" y="318" width="244" height="16" rx="8"/>
+    <rect x="390" y="346" width="244" height="16" rx="8"/>
+    <rect x="390" y="374" width="244" height="16" rx="8"/>
+    <rect x="390" y="402" width="244" height="16" rx="8"/>
+    <rect x="390" y="430" width="244" height="16" rx="8"/>
+    <rect x="390" y="458" width="244" height="16" rx="8"/>
+    <rect x="390" y="486" width="244" height="16" rx="8"/>
+    <rect x="390" y="514" width="244" height="16" rx="8"/>
+    <rect x="390" y="542" width="244" height="16" rx="8"/>
+    <rect x="398" y="570" width="228" height="16" rx="8"/>
+  </g>
+</svg>

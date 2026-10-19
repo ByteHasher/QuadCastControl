@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="metal" x1="330" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#131927"/>
+      <stop offset="0.2" stop-color="#465066"/>
+      <stop offset="0.42" stop-color="#252b3a"/>
+      <stop offset="0.76" stop-color="#111623"/>
+      <stop offset="1" stop-color="#3b465e"/>
+    </linearGradient>
+    <linearGradient id="cap" x1="0" y1="176" x2="0" y2="290" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#66718b"/>
+      <stop offset="0.25" stop-color="#303747"/>
+      <stop offset="1" stop-color="#131825"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a1aeca"/>
+      <stop offset="0.5" stop-color="#535e78"/>
+      <stop offset="1" stop-color="#212c43"/>
+    </linearGradient>
+  </defs>
+  <!-- Stand and suspension are one editable silhouette behind the grille. -->
+  <rect x="490" y="700" width="44" height="138" rx="14" fill="url(#metal)"/>
+  <path d="M398 813H626C653 813 670 826 670 842V854H354V842C354 826 371 813 398 813Z" fill="url(#metal)"/>
+  <path d="M372 817H652" fill="none" stroke="#8490ac" stroke-width="5" stroke-linecap="round"/>
+  <path d="M381 550L302 614M643 550L722 614M302 686L381 737M722 686L643 737" fill="none" stroke="url(#rim)" stroke-width="17" stroke-linecap="round"/>
+  <rect x="366" y="176" width="292" height="558" rx="88" fill="url(#metal)" stroke="#77829d" stroke-width="4"/>
+  <path d="M454 176H570C618 176 658 215 658 263V279H366V263C366 215 406 176 454 176Z" fill="url(#cap)"/>
+  <path d="M405 213C428 192 462 188 512 188C562 188 596 192 619 213" fill="none" stroke="#a7acc2" stroke-opacity="0.65" stroke-width="5" stroke-linecap="round"/>
+  <rect x="378" y="275" width="268" height="320" rx="24" fill="#090d19"/>
+  <path d="M387 600H637" fill="none" stroke="#737f9a" stroke-width="5" stroke-linecap="round"/>
+  <rect x="284" y="614" width="456" height="28" rx="14" fill="url(#metal)" stroke="#75819c" stroke-width="3"/>
+  <rect x="284" y="680" width="456" height="28" rx="14" fill="url(#metal)" stroke="#75819c" stroke-width="3"/>
+  <circle cx="512" cy="655" r="12" fill="#101625" stroke="#77839f" stroke-width="3"/>
+  <circle cx="512" cy="655" r="4" fill="#8291b2"/>
+</svg>

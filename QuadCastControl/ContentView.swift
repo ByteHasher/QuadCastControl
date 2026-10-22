@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var discovery = MicrophoneDiscovery()
-    @State private var lighting = LightingControl()
+    @Environment(MicrophoneDiscovery.self) private var discovery
+    @Environment(LightingControl.self) private var lighting
     @State private var selectedID: String?
     @State private var section = WorkspaceSection.device
     @State private var tab = DeviceTab.lighting
@@ -55,4 +55,8 @@ struct ContentView: View {
     }
 }
 
-#Preview { ContentView() }
+#Preview {
+    ContentView()
+        .environment(MicrophoneDiscovery())
+        .environment(LightingControl())
+}

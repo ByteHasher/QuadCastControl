@@ -18,6 +18,12 @@ Overview and diagnostics display actual discovery metadata. Audio explains the
 current support boundary and opens macOS System Settings; it does not invent
 unimplemented audio controls. The profile popover summarizes the current draft.
 
+The app has a single workspace window (`Window`, not `WindowGroup`), so there is
+no File › New Window. `QuadCastControlApp` owns the one `MicrophoneDiscovery` and
+`LightingControl` and injects them through the environment; a microphone never
+receives two concurrent color streams. Closing the window still stops discovery
+and lighting; reopening it starts discovery again with the same controllers.
+
 `ContentView` owns a draft per microphone for the current session, so navigating
 between tabs does not reset the editor. The lighting scene previews that draft;
 it is not a readback of the hardware. Color, hue/saturation, byte-valued presets,
@@ -66,10 +72,10 @@ The caption is the single-line “Changes apply instantly”.
 ## Appearance
 
 Settings provides System (the default), Light and Dark modes. The app and the
-settings picker share AppAppearance.storageKey through AppStorage. Each window's
+settings picker share AppAppearance.storageKey through AppStorage. The window's
 AppAppearanceView observes it and updates the SwiftUI color scheme as well as the
 native preferred appearance, so selection persists between launches and updates
-open windows immediately. System passes
+the open window immediately. System passes
 nil to preferredColorScheme and follows macOS appearance changes. Choosing a
 mode changes presentation only; it does not recreate discovery or lighting
 controllers, reset the editor, or send a command to the microphone.

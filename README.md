@@ -2,6 +2,19 @@
 
 Native macOS app for HyperX microphones, built with SwiftUI.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Docs/Screenshots/lighting-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="Docs/Screenshots/lighting-light.png">
+  <img src="Docs/Screenshots/lighting-dark.png" alt="QuadCastControl lighting screen with a microphone preview, color wheel, presets, brightness, and power controls" width="1240">
+</picture>
+
+<p align="center">
+  <a href="Docs/Screenshots/lighting-dark.png">Dark appearance</a> ·
+  <a href="Docs/Screenshots/lighting-light.png">Light appearance</a>
+  <br>
+  <sub>Interface previews with a sample device. The microphone illustration shows the selected color.</sub>
+</p>
+
 **Work in progress.** Microphone discovery through CoreAudio and QuadCast S
 HID discovery/binding are implemented, along with a live-color packet builder
 and byte-level tests. QuadCast S supports a solid color picker, color presets,

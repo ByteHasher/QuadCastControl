@@ -9,6 +9,7 @@ import AppKit
 import SwiftUI
 
 struct WorkspaceDetailsView: View {
+    @AppStorage(AppAppearance.storageKey) private var appearance = AppAppearance.system
     let section: WorkspaceSection
     let tab: DeviceTab
     let microphone: Microphone?
@@ -72,7 +73,7 @@ struct WorkspaceDetailsView: View {
                 LabeledContent("workspace.hidInterfaces") { Text(microphone?.hidInterfaces.count ?? 0, format: .number) }
                 if case .failed(let status) = hidState {
                     Text(verbatim: String(format: "IOHIDManager: 0x%08X", UInt32(bitPattern: status)))
-                        .font(.callout.monospaced()).foregroundStyle(.orange)
+                        .font(.callout.monospaced()).foregroundStyle(WorkspaceTheme.warning)
                 }
             }
             ForEach(microphone?.hidInterfaces ?? []) { interface in
@@ -91,7 +92,12 @@ struct WorkspaceDetailsView: View {
     private var settings: some View {
         WorkspaceCard(title: "workspace.settings") {
             LabeledContent("workspace.language") { Text("workspace.systemLanguage") }
-            LabeledContent("workspace.appearance") { Text("workspace.darkAppearance") }
+            Picker("workspace.appearance", selection: $appearance) {
+                ForEach(AppAppearance.allCases) { mode in
+                    Text(mode.title).tag(mode)
+                }
+            }
+            .pickerStyle(.menu)
             Divider()
             Text("workspace.profileLocal").foregroundStyle(WorkspaceTheme.muted).lineSpacing(5)
             Text("workspace.unofficial").font(.callout).foregroundStyle(WorkspaceTheme.muted)

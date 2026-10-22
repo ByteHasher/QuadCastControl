@@ -43,7 +43,7 @@ struct WorkspaceHeader: View {
                         ForEach(DeviceTab.allCases) { item in
                             Button { tab = item } label: {
                                 Text(item.title).font(.system(size: 23, weight: .light))
-                                    .foregroundStyle(tab == item ? .white.opacity(0.92) : WorkspaceTheme.muted)
+                                    .foregroundStyle(tab == item ? WorkspaceTheme.text : WorkspaceTheme.muted)
                                     .padding(.bottom, 16)
                                     .overlay(alignment: .bottom) {
                                         if tab == item { WorkspaceTheme.accent.frame(height: 2) }

@@ -13,6 +13,9 @@ implemented yet. Other recognized models
 currently have audio discovery only. Physical lighting behavior still needs
 validation on each supported revision.
 
+Choose **Settings → Appearance** to follow macOS or keep Light/Dark mode.
+The choice is remembered between launches.
+
 **Unofficial, not affiliated with HyperX/HP.**
 
 ## Build and run

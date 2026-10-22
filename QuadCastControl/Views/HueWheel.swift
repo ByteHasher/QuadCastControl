@@ -30,8 +30,8 @@ struct HueWheel: View {
                         Color(hue: Double($0) / 36, saturation: 1, brightness: 1)
                     }, center: .center), lineWidth: 20)
                     Circle().fill(color.swiftUIColor).frame(width: diameter * 0.39, height: diameter * 0.39)
-                        .overlay(Circle().stroke(.white.opacity(0.25), lineWidth: 1))
-                    Circle().fill(color.swiftUIColor).overlay(Circle().stroke(.white, lineWidth: 2))
+                        .overlay(Circle().stroke(WorkspaceTheme.line, lineWidth: 1))
+                    Circle().fill(color.swiftUIColor).overlay(Circle().stroke(WorkspaceTheme.selectionRing, lineWidth: 2))
                         .frame(width: 20, height: 20).shadow(color: .black.opacity(0.4), radius: 3, y: 1)
                         .position(x: center + cos(angle) * radius, y: center + sin(angle) * radius)
                 }

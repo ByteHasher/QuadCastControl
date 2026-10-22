@@ -56,6 +56,7 @@ struct MicrophoneLightingView: View {
                 }
                 Spacer(minLength: 0)
             }
+            .foregroundStyle(.white)
             .padding(.horizontal, 20).padding(.vertical, 15)
             .background(LinearGradient(colors: [Color(red: 0.04, green: 0.21, blue: 0.56),
                                                Color(red: 0.05, green: 0.30, blue: 0.68)],
@@ -131,7 +132,7 @@ struct MicrophoneLightingView: View {
                     ForEach(ColorPreset.allCases) { preset in
                         Button { liveColorSelection.wrappedValue = preset.color } label: {
                             Circle().fill(preset.color.swiftUIColor).frame(width: 21, height: 21)
-                                .overlay(Circle().stroke(draft.color == preset.color ? .white : .white.opacity(0.15),
+                                .overlay(Circle().stroke(draft.color == preset.color ? WorkspaceTheme.selectionRing : WorkspaceTheme.line,
                                                         lineWidth: draft.color == preset.color ? 2 : 0.6))
                         }.buttonStyle(.plain).focusEffectDisabled()
                             .accessibilityLabel(Text(preset.title)).help(Text(preset.title))
@@ -187,11 +188,11 @@ struct MicrophoneLightingView: View {
             let requestedColor = draft.enabled ? draft.color.scaled(byPercent: draft.brightnessPercent) : .off
             if let microphone, lighting.activeColors[microphone.id] == requestedColor {
                 HStack(spacing: 8) {
-                    Circle().fill(draft.enabled ? Color.green : WorkspaceTheme.muted).frame(width: 6, height: 6)
+                    Circle().fill(draft.enabled ? WorkspaceTheme.live : WorkspaceTheme.muted).frame(width: 6, height: 6)
                     Text(draft.enabled ? LocalizedStringKey("workspace.liveOnMicrophone") : LocalizedStringKey("workspace.off"))
                         .font(.system(size: 12))
                 }
-                .foregroundStyle(draft.enabled ? Color.green : WorkspaceTheme.muted)
+                .foregroundStyle(draft.enabled ? WorkspaceTheme.live : WorkspaceTheme.muted)
                 .accessibilityElement(children: .combine)
             } else {
                 HStack(spacing: 8) {
@@ -201,7 +202,7 @@ struct MicrophoneLightingView: View {
             }
         case .failed(let failure):
             Label { Text(failure.message) } icon: { Image(systemName: "exclamationmark.triangle") }
-                .font(.system(size: 10)).foregroundStyle(.orange).fixedSize(horizontal: false, vertical: true)
+                .font(.system(size: 10)).foregroundStyle(WorkspaceTheme.warning).fixedSize(horizontal: false, vertical: true)
         case .idle:
             Label(microphone == nil ? LocalizedStringKey("discovery.disconnected") : LocalizedStringKey("workspace.notApplied"),
                   systemImage: "circle.dashed")

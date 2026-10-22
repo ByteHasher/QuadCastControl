@@ -11,7 +11,9 @@ import SwiftUI
 struct QuadCastControlApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppAppearanceView {
+                ContentView()
+            }
         }
         .windowStyle(.hiddenTitleBar)
         .defaultSize(width: 1240, height: 820)

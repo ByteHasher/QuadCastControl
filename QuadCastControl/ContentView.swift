@@ -29,7 +29,7 @@ struct ContentView: View {
                                 draft: draft.wrappedValue)
                 if discovery.scanFailed {
                     Label("discovery.errorDetail", systemImage: "exclamationmark.triangle")
-                        .font(.callout).foregroundStyle(.orange).padding(14).frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.callout).foregroundStyle(WorkspaceTheme.warning).padding(14).frame(maxWidth: .infinity, alignment: .leading)
                 }
                 if section == .device && tab == .lighting {
                     MicrophoneLightingView(microphone: microphone, lighting: lighting, draft: draft)
@@ -45,7 +45,7 @@ struct ContentView: View {
         }
         .frame(minWidth: 1024, idealWidth: 1240, minHeight: 680, idealHeight: 820)
         .background(WorkspaceTheme.background)
-        .foregroundStyle(.white.opacity(0.88)).tint(WorkspaceTheme.accent).preferredColorScheme(.dark)
+        .foregroundStyle(WorkspaceTheme.text).tint(WorkspaceTheme.accent)
         .task { discovery.start() }
         .onChange(of: discovery.microphones) { _, microphones in
             lighting.reconcile(microphones)

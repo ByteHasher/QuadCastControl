@@ -25,12 +25,12 @@ struct WorkspaceSidebar: View {
                     }
                 }
             }
-            .foregroundStyle(.white.opacity(0.9))
+            .foregroundStyle(WorkspaceTheme.text.opacity(0.9))
             .frame(maxWidth: .infinity, alignment: collapsed ? .center : .leading)
             .padding(.horizontal, collapsed ? 0 : 25).padding(.top, 34).padding(.bottom, 46)
 
             if !collapsed {
-                ConsoleHeading(title: "workspace.devices").foregroundStyle(.white.opacity(0.65))
+                ConsoleHeading(title: "workspace.devices").foregroundStyle(WorkspaceTheme.muted)
                     .padding(.horizontal, 24).padding(.bottom, 18)
             }
             if microphones.isEmpty {
@@ -52,14 +52,14 @@ struct WorkspaceSidebar: View {
                                     HStack(spacing: 6) {
                                         Circle().fill(WorkspaceTheme.connected).frame(width: 5, height: 5)
                                         Text("discovery.connectedUSB").font(.system(size: 10))
-                                    }.foregroundStyle(.white.opacity(0.65))
+                                    }.foregroundStyle(WorkspaceTheme.muted)
                                 }
                                 Spacer(minLength: 0)
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: collapsed ? .center : .leading)
                         .padding(.horizontal, collapsed ? 0 : 24).frame(height: collapsed ? 52 : 68)
-                        .foregroundStyle(.white.opacity(selected ? 0.95 : 0.8))
+                        .foregroundStyle(WorkspaceTheme.text.opacity(selected ? 0.95 : 0.8))
                         .background(selected ? WorkspaceTheme.sidebarSelection : .clear)
                         .overlay(alignment: .leading) { if selected { WorkspaceTheme.accent.frame(width: 3) } }
                         .contentShape(Rectangle())
@@ -75,7 +75,7 @@ struct WorkspaceSidebar: View {
             sidebarButton("workspace.settings", icon: "gearshape", selected: section == .settings) { section = .settings }
             if !collapsed {
                 Text("workspace.unofficial").font(.system(size: 10)).lineSpacing(5)
-                    .foregroundStyle(.white.opacity(0.4)).padding(.horizontal, 24).padding(.top, 16).padding(.bottom, 25)
+                    .foregroundStyle(WorkspaceTheme.muted).padding(.horizontal, 24).padding(.top, 16).padding(.bottom, 25)
             }
         }
         .frame(width: collapsed ? 68 : 224)
@@ -109,7 +109,7 @@ struct WorkspaceSidebar: View {
             }
             .frame(maxWidth: .infinity, alignment: collapsed ? .center : .leading)
             .padding(.horizontal, collapsed ? 0 : 24).frame(height: 52)
-            .foregroundStyle(.white.opacity(selected ? 0.95 : 0.8))
+            .foregroundStyle(WorkspaceTheme.text.opacity(selected ? 0.95 : 0.8))
             .background(selected ? WorkspaceTheme.sidebarSelection : .clear)
             .overlay(alignment: .leading) { if selected { WorkspaceTheme.accent.frame(width: 3) } }
             .contentShape(Rectangle())

@@ -1,6 +1,6 @@
 # Console interface
 
-The workspace follows the user's previous design: a dark graphite sidebar, charcoal
+The workspace follows the user's previous design: a theme-aware sidebar and
 header, device tabs, microphone stage and a four-column lighting console. The
 app wordmark is **QUADCAST CONTROL**. The microphone is a procedural SwiftUI illustration with a colored grille;
 see [MicrophoneIllustration.md](MicrophoneIllustration.md).
@@ -12,7 +12,7 @@ Moving the button adds no header row or vertical offset to the wordmark.
 Collapsed brand and navigation rows fill the rail width and center their icons;
 text spacing and trailing spacers are present only when expanded, so they cannot
 shift the icon column away from the centered hamburger button.
-Its subtle graphite gradient matches the main panels. Selection uses a muted
+Its gradient follows the light or dark palette of the main panels. Selection uses a muted
 cyan fill and the shared accent color for its icon and leading indicator.
 Overview and diagnostics display actual discovery metadata. Audio explains the
 current support boundary and opens macOS System Settings; it does not invent
@@ -62,3 +62,20 @@ color. This is the selected lighting state, not hardware readback. The separate
 status still reports pending commands, confirmed sends, stopped control or errors.
 Startup and discovery do not send commands or overwrite the microphone's color.
 The caption is the single-line “Changes apply instantly”.
+
+## Appearance
+
+Settings provides System (the default), Light and Dark modes. The app and the
+settings picker share AppAppearance.storageKey through AppStorage. Each window's
+AppAppearanceView observes it and updates the SwiftUI color scheme as well as the
+native preferred appearance, so selection persists between launches and updates
+open windows immediately. System passes
+nil to preferredColorScheme and follows macOS appearance changes. Choosing a
+mode changes presentation only; it does not recreate discovery or lighting
+controllers, reset the editor, or send a command to the microphone.
+
+WorkspaceTheme uses asset-catalog colors with light and dark variants for the main surfaces,
+sidebar, labels, separators, accents and status colors. The hue marker and white
+preset keep a visible outline in both modes. The selected effect retains white
+text on its blue background. The microphone's dark physical materials and RGB
+values remain independent of the app's appearance.

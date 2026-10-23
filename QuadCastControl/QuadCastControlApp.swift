@@ -18,8 +18,10 @@ struct QuadCastControlApp: App {
         // A single-instance window: WindowGroup would let File › New Window open a
         // second workspace with its own drafts driving the same shared controller.
         Window("discovery.appTitle", id: "workspace") {
-            AppAppearanceView {
-                ContentView()
+            AppLanguageView {
+                AppAppearanceView {
+                    ContentView()
+                }
             }
             .environment(discovery)
             .environment(lighting)

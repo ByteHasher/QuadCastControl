@@ -29,6 +29,9 @@ validation on each supported revision.
 Choose **Settings → Appearance** to follow macOS or keep Light/Dark mode.
 The choice is remembered between launches.
 
+Choose **Settings → Language** to use English, Russian, or the system language
+(the default). The interface updates immediately and remembers your choice.
+
 **Unofficial, not affiliated with HyperX/HP.**
 
 ## Build and run

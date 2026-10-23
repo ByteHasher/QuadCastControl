@@ -9,6 +9,8 @@ import AppKit
 import SwiftUI
 
 struct WorkspaceDetailsView: View {
+    @Environment(\.locale) private var locale
+    @AppStorage(AppLanguage.storageKey) private var language = AppLanguage.system
     @AppStorage(AppAppearance.storageKey) private var appearance = AppAppearance.system
     let section: WorkspaceSection
     let tab: DeviceTab
@@ -91,10 +93,15 @@ struct WorkspaceDetailsView: View {
 
     private var settings: some View {
         WorkspaceCard(title: "workspace.settings") {
-            LabeledContent("workspace.language") { Text("workspace.systemLanguage") }
+            Picker("workspace.language", selection: $language) {
+                ForEach(AppLanguage.allCases) { language in
+                    Text(language.title.localized(for: locale)).tag(language)
+                }
+            }
+            .pickerStyle(.menu)
             Picker("workspace.appearance", selection: $appearance) {
                 ForEach(AppAppearance.allCases) { mode in
-                    Text(mode.title).tag(mode)
+                    Text(mode.title.localized(for: locale)).tag(mode)
                 }
             }
             .pickerStyle(.menu)

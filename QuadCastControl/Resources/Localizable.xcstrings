@@ -50,7 +50,6 @@
       }
     },
     "discovery.appTitle" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -62,6 +61,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "QuadCast Control"
+          }
+        }
+      }
+    },
+    "discovery.connectedUSB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connected via USB"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключён по USB"
           }
         }
       }
@@ -79,22 +94,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подключите микрофон HyperX по USB."
-          }
-        }
-      }
-    },
-    "discovery.connectedUSB" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Connected via USB"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Подключён по USB"
           }
         }
       }
@@ -244,6 +243,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HID-интерфейс не связан"
+          }
+        }
+      }
+    },
+    "language.english" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "language.russian" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Русский"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Русский"
+          }
+        }
+      }
+    },
+    "language.system" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как в системе"
           }
         }
       }
@@ -1213,6 +1260,7 @@
       }
     },
     "workspace.systemLanguage" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

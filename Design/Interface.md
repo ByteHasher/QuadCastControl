@@ -45,7 +45,13 @@ at the minimum window size; only the microphone preview shrinks.
 The workspace relies on the native hidden-titlebar safe area for the window
 buttons; it adds no extra top spacer beneath that area.
 Columns share the available width, while the sidebar can collapse to an icon rail.
-English/Russian labels remain in String Catalog. UI uses macOS 15-compatible APIs.
+English/Russian labels remain in String Catalog. Settings offers System (the
+default), English and Russian. AppLanguageView observes the saved AppStorage
+choice and updates the locale without recreating the workspace or its device
+sessions. System chooses the best supported language from macOS's preferred
+languages, falling back to English. Model-provided LocalizedStringResource
+values also receive the selected locale, including titles, help, accessibility
+labels and error messages. UI uses macOS 15-compatible APIs.
 
 The lighting page is a non-scrolling vertical layout. SwiftUI reserves the
 console's full 320 pt height and the footer's actual localized text height first.

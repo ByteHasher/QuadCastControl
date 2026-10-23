@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkspaceHeader: View {
+    @Environment(\.locale) private var locale
     let microphone: Microphone?
     let section: WorkspaceSection
     @Binding var tab: DeviceTab
@@ -42,7 +43,7 @@ struct WorkspaceHeader: View {
                     HStack(spacing: 27) {
                         ForEach(DeviceTab.allCases) { item in
                             Button { tab = item } label: {
-                                Text(item.title).font(.system(size: 23, weight: .light))
+                                Text(item.title.localized(for: locale)).font(.system(size: 23, weight: .light))
                                     .foregroundStyle(tab == item ? WorkspaceTheme.text : WorkspaceTheme.muted)
                                     .padding(.bottom, 16)
                                     .overlay(alignment: .bottom) {
@@ -81,7 +82,7 @@ struct WorkspaceHeader: View {
         Button(action: action) {
             VStack(spacing: 6) {
                 Image(systemName: icon).font(.system(size: 20, weight: .light))
-                Text(title).font(.system(size: 9))
+                Text(title.localized(for: locale)).font(.system(size: 9))
             }.frame(width: 70).padding(.bottom, 15).foregroundStyle(WorkspaceTheme.muted)
         }.buttonStyle(.plain).focusEffectDisabled()
     }

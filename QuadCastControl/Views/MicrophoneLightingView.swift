@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MicrophoneLightingView: View {
+    @Environment(\.locale) private var locale
     let microphone: Microphone?
     @Bindable var lighting: LightingControl
     @Binding var draft: LightingDraft
@@ -113,8 +114,8 @@ struct MicrophoneLightingView: View {
         }
         .buttonStyle(.plain).focusEffectDisabled().disabled(!available)
         .opacity(available ? 1 : 0.35)
-        .help(Text(powerActionTitle))
-        .accessibilityLabel(Text(powerActionTitle))
+        .help(Text(powerActionTitle.localized(for: locale)))
+        .accessibilityLabel(Text(powerActionTitle.localized(for: locale)))
         .accessibilityValue(Text(powerIsOn ? LocalizedStringKey("workspace.lightsOn") : LocalizedStringKey("workspace.lightsOff")))
     }
 
@@ -135,7 +136,8 @@ struct MicrophoneLightingView: View {
                                 .overlay(Circle().stroke(draft.color == preset.color ? WorkspaceTheme.selectionRing : WorkspaceTheme.line,
                                                         lineWidth: draft.color == preset.color ? 2 : 0.6))
                         }.buttonStyle(.plain).focusEffectDisabled()
-                            .accessibilityLabel(Text(preset.title)).help(Text(preset.title))
+                            .accessibilityLabel(Text(preset.title.localized(for: locale)))
+                            .help(Text(preset.title.localized(for: locale)))
                     }
                 }.frame(width: 81).padding(.top, 4)
             }
@@ -201,7 +203,7 @@ struct MicrophoneLightingView: View {
                 }
             }
         case .failed(let failure):
-            Label { Text(failure.message) } icon: { Image(systemName: "exclamationmark.triangle") }
+            Label { Text(failure.message.localized(for: locale)) } icon: { Image(systemName: "exclamationmark.triangle") }
                 .font(.system(size: 10)).foregroundStyle(WorkspaceTheme.warning).fixedSize(horizontal: false, vertical: true)
         case .idle:
             Label(microphone == nil ? LocalizedStringKey("discovery.disconnected") : LocalizedStringKey("workspace.notApplied"),

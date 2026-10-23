@@ -27,9 +27,10 @@ enum WorkspaceTheme {
 }
 
 struct ConsoleHeading: View {
+    @Environment(\.locale) private var locale
     let title: LocalizedStringResource
     var body: some View {
-        Text(title).textCase(.uppercase).font(.system(size: 11, weight: .semibold))
+        Text(title.localized(for: locale)).textCase(.uppercase).font(.system(size: 11, weight: .semibold))
             .tracking(1.5).foregroundStyle(WorkspaceTheme.muted)
     }
 }

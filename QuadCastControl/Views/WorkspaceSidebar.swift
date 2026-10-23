@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkspaceSidebar: View {
+    @Environment(\.locale) private var locale
     let microphones: [Microphone]
     @Binding var selectedID: String?
     @Binding var section: WorkspaceSection
@@ -103,7 +104,7 @@ struct WorkspaceSidebar: View {
                 Image(systemName: icon).font(.system(size: 18, weight: .light)).frame(width: 22)
                     .foregroundStyle(selected ? WorkspaceTheme.accent : WorkspaceTheme.muted)
                 if !collapsed {
-                    Text(title).font(.system(size: 13, weight: selected ? .semibold : .medium))
+                    Text(title.localized(for: locale)).font(.system(size: 13, weight: selected ? .semibold : .medium))
                     Spacer(minLength: 0)
                 }
             }
@@ -114,7 +115,7 @@ struct WorkspaceSidebar: View {
             .overlay(alignment: .leading) { if selected { WorkspaceTheme.accent.frame(width: 3) } }
             .contentShape(Rectangle())
         }
-        .buttonStyle(.plain).focusEffectDisabled().help(Text(title))
-        .accessibilityLabel(Text(title))
+        .buttonStyle(.plain).focusEffectDisabled().help(Text(title.localized(for: locale)))
+        .accessibilityLabel(Text(title.localized(for: locale)))
     }
 }
